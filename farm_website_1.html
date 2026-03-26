@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenfield Farm — Fresh From Our Land</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES & RESET
+    ═══════════════════════════════════════ */
+    :root {
+      --green-deep:  #2d4a1e;
+      --green-mid:   #4a7c2f;
+      --green-light: #7ab648;
+      --cream:       #faf6ee;
+      --warm-white:  #fffdf7;
+      --earth:       #8b6914;
+      --earth-light: #c8971a;
+      --text-dark:   #1c2b10;
+      --text-mid:    #4a5e36;
+      --text-light:  #7a8c6a;
+      --accent:      #e85d26;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    body > nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 26px 60px;
+      background: rgba(74, 124, 47,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(74,124,47,0.15);
+      animation: fadeDown 0.8s ease both;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo span { color: var(--green-light); }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      color: rgba(255,255,255,0.78);
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.22s, border-color 0.22s;
+    }
+    .nav-links a:not(.nav-cta):hover { color: white; border-bottom-color: var(--green-light); }
+    .nav-cta {
+      background: none;
+      border: none;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 3px;
+      letter-spacing: 0.1em;
+    }
+    .nav-cta:hover { color: white; border-bottom-color: var(--green-light); }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 172px 60px 80px 60px;
+      background: var(--cream);
+      animation: fadeLeft 1s ease 0.2s both;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--green-light);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block; width: 30px; height: 2px;
+      background: var(--green-light);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 5vw, 76px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--green-deep);
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+    .hero-desc {
+      font-size: 17px; font-weight: 300; line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--green-deep);
+      color: var(--cream);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--green-deep);
+      color: var(--green-deep);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { background: var(--green-deep); color: var(--cream); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 40px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(74,124,47,0.2);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 700;
+      color: var(--green-deep); line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-light);
+      margin-top: 4px;
+    }
+    .hero-image {
+      position: relative; overflow: hidden;
+      animation: fadeRight 1s ease 0.4s both;
+      display: grid;
+      grid-template-rows: 1fr 4px 1fr;
+    }
+    .hero-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 8s ease;
+      display: block;
+    }
+    .hero-image img:hover { transform: scale(1.04); }
+    .hero-divider {
+      background: var(--green-light);
+      width: 100%;
+      z-index: 1;
+    }
+    .hero-badge {
+      position: absolute; bottom: 40px; left: -20px;
+      background: var(--earth-light);
+      color: white;
+      padding: 18px 24px;
+      border-radius: 4px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .hero-badge strong { display: block; font-size: 22px; font-family: 'Playfair Display', serif; }
+
+    /* ═══════════════════════════════════════
+       MARQUEE BANNER
+    ═══════════════════════════════════════ */
+    .marquee-wrap {
+      background: var(--green-deep);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-track span {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.75);
+      padding: 0 40px;
+    }
+    .marquee-track span.dot { color: var(--green-light); padding: 0 8px; }
+
+    /* ═══════════════════════════════════════
+       FRUITS SECTION
+    ═══════════════════════════════════════ */
+    #home, #fruits, #about { scroll-margin-top: 80px; }
+    #fruits { padding: 100px 60px; background: var(--warm-white); }
+    .section-header { text-align: center; margin-bottom: 70px; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--green-light);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px); font-weight: 900;
+      color: var(--green-deep); line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-sub {
+      font-size: 16px; font-weight: 300; line-height: 1.8;
+      color: var(--text-mid); max-width: 520px;
+      margin: 16px auto 0;
+    }
+
+    /* Fruit grid */
+    .fruit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .fruit-card {
+      background: var(--cream);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.35s, box-shadow 0.35s;
+      animation: fadeUp 0.7s ease both;
+    }
+    .fruit-card:nth-child(1) { animation-delay: 0.1s; }
+    .fruit-card:nth-child(2) { animation-delay: 0.2s; grid-row: span 2; }
+    .fruit-card:nth-child(3) { animation-delay: 0.3s; }
+    .fruit-card:nth-child(4) { animation-delay: 0.4s; }
+    .fruit-card:nth-child(5) { animation-delay: 0.5s; }
+    .fruit-card:nth-child(6) { animation-delay: 0.6s; }
+    .fruit-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(45,74,30,0.15); }
+    .fruit-card .img-wrap {
+      overflow: hidden;
+      height: 220px;
+    }
+    .fruit-card:nth-child(2) .img-wrap { height: 468px; }
+    .fruit-card .img-wrap img {
+      height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .fruit-card:hover .img-wrap img { transform: scale(1.08); }
+    .fruit-info { padding: 22px 24px 24px; }
+    .fruit-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--green-light);
+      color: white; padding: 4px 10px;
+      border-radius: 2px; margin-bottom: 10px;
+    }
+    .fruit-tag.seasonal { background: var(--accent); }
+    .fruit-tag.popular  { background: var(--earth); }
+    .fruit-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--green-deep); margin-bottom: 6px;
+    }
+    .fruit-desc {
+      font-size: 13px; font-weight: 300; line-height: 1.7;
+      color: var(--text-mid);
+    }
+    .fruit-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid rgba(74,124,47,0.12);
+    }
+    .fruit-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green-mid);
+    }
+    .fruit-price span { font-size: 13px; font-weight: 300; color: var(--text-light); }
+    .fruit-avail {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green-light);
+    }
+    .fruit-avail::before { content: '● '; font-size: 8px; }
+
+    /* ═══════════════════════════════════════
+       FEATURES STRIP
+    ═══════════════════════════════════════ */
+    .features-strip {
+      background: var(--green-deep);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+    .feature-item { text-align: center; }
+    .feature-icon {
+      font-size: 36px; margin-bottom: 14px;
+      display: block;
+    }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700;
+      color: white; margin-bottom: 8px;
+    }
+    .feature-text {
+      font-size: 13px; font-weight: 300; line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ═══════════════════════════════════════
+       FARM STORY
+    ═══════════════════════════════════════ */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-img { position: relative; overflow: hidden; min-height: 520px; }
+    .about-img img { height: 100%; object-fit: cover; }
+    .about-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(45,74,30,0.4) 0%, transparent 60%);
+    }
+    .about-text {
+      padding: 80px 70px;
+      background: var(--cream);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-text .section-eyebrow { text-align: left; }
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3vw, 46px); font-weight: 900;
+      line-height: 1.15; color: var(--green-deep);
+      margin-bottom: 24px;
+    }
+    .about-title em { font-style: italic; }
+    .about-body {
+      font-size: 16px; font-weight: 300; line-height: 1.85;
+      color: var(--text-mid); margin-bottom: 16px;
+    }
+    .about-cta {
+      margin-top: 32px;
+    }
+
+    /* ═══════════════════════════════════════
+       CONTACT CTA BAND
+    ═══════════════════════════════════════ */
+    .contact-band {
+      background: var(--cream);
+      padding: 100px 60px;
+      text-align: center;
+    }
+    .contact-band .section-eyebrow { margin-bottom: 12px; }
+    .contact-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 900;
+      color: var(--green-deep); line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .contact-band h2 em { font-style: italic; color: var(--green-mid); }
+    .contact-band p {
+      font-size: 17px; font-weight: 300; line-height: 1.8;
+      color: var(--text-mid); max-width: 480px;
+      margin: 0 auto 40px;
+    }
+    .btn-contact {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 18px 52px;
+      border-radius: 2px;
+      box-shadow: 0 8px 30px rgba(232,93,38,0.35);
+      transition: all 0.3s;
+    }
+    .btn-contact:hover {
+      background: #c44d1a;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(232,93,38,0.45);
+    }
+
+    /* ═══════════════════════════════════════
+       CONTACT PAGE (#contact)
+    ═══════════════════════════════════════ */
+    #contact {
+      display: none;
+      min-height: 100vh;
+      padding-top: 92px;
+    }
+    #contact.active { display: block; }
+    .contact-hero {
+      background: var(--green-deep);
+      padding: 172px 60px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1400&q=70') center/cover;
+      opacity: 0.1;
+    }
+    .contact-hero-inner { position: relative; max-width: 600px; }
+    .contact-hero .section-eyebrow { color: var(--green-light); }
+    .contact-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px); font-weight: 900;
+      color: white; line-height: 1.1;
+      margin: 12px 0 20px;
+    }
+    .contact-hero h1 em { font-style: italic; color: var(--green-light); }
+    .contact-hero p {
+      font-size: 17px; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0;
+    }
+    .contact-info {
+      background: var(--cream);
+      padding: 70px 50px;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700;
+      color: var(--green-deep); margin-bottom: 32px;
+    }
+    .info-item {
+      display: flex; align-items: flex-start; gap: 18px;
+      margin-bottom: 32px;
+    }
+    .info-icon {
+      width: 44px; height: 44px;
+      background: var(--green-deep);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .info-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .info-val {
+      font-size: 15px; font-weight: 400; color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .hours-grid {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(74,124,47,0.15);
+    }
+    .hours-grid h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--green-deep); margin-bottom: 16px;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      padding: 8px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(74,124,47,0.08);
+      color: var(--text-mid);
+    }
+    .hours-row .day { font-weight: 700; }
+    .hours-row .time { color: var(--green-mid); font-weight: 400; }
+
+    .contact-form-wrap {
+      background: var(--warm-white);
+      padding: 70px 60px;
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700;
+      color: var(--green-deep); margin-bottom: 32px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mid);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(74,124,47,0.2);
+      border-radius: 2px;
+      background: white;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px; font-weight: 300;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.25s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-mid);
+    }
+    .form-group textarea { height: 130px; resize: vertical; }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--green-deep);
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none; border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--green-mid); transform: translateY(-2px); }
+    .form-success {
+      display: none;
+      background: rgba(122,182,72,0.15);
+      border: 1.5px solid var(--green-light);
+      border-radius: 2px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-size: 15px; color: var(--green-deep); font-weight: 400;
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 60px;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      font-size: 13px;
+    }
+    footer > div:last-of-type { text-align: center; }
+    footer nav { justify-self: end; }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700;
+      color: white;
+    }
+    footer .footer-logo span { color: var(--green-light); }
+    footer nav { display: flex; gap: 28px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--green-light); }
+
+    /* ═══════════════════════════════════════
+       POLICY PAGES
+    ═══════════════════════════════════════ */
+    .policy-body {
+      max-width: 820px; margin: 0 auto; padding: 70px 40px 80px;
+    }
+    .policy-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px;
+    }
+    .policy-card {
+      background: var(--warm-white);
+      border-radius: 8px;
+      padding: 32px 28px;
+      border-top: 3px solid var(--green-light);
+    }
+    .policy-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .policy-card p {
+      color: var(--text-light); font-size: 14px; line-height: 1.8; margin: 0;
+    }
+    .policy-back {
+      display: inline-block; color: var(--green-deep);
+      font-weight: 700; text-decoration: none; font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .policy-back:hover { color: var(--green-light); }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════ */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE SHOW/HIDE
+    ═══════════════════════════════════════ */
+    #home-page { display: block; }
+    #home-page.hidden { display: none; }
+
+    /* ═══════════════════════════════════════
+       FRUIT DETAIL PAGES
+    ═══════════════════════════════════════ */
+    .fruit-page { display: none; }
+    .fp-hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
+    .fp-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .fp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,43,16,0.92) 0%, rgba(28,43,16,0.3) 55%, rgba(0,0,0,0.05) 100%); }
+    .fp-hero-text { position: relative; padding: 60px 70px; color: white; width: 100%; }
+    .fp-back { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; cursor: pointer; border: none; background: none; margin-bottom: 20px; transition: color 0.2s; padding: 0; font-family: 'Lato', sans-serif; }
+    .fp-back:hover { color: var(--green-light); }
+    .fp-hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 6vw, 82px); font-weight: 900; line-height: 1.0; margin-bottom: 14px; color: white; }
+    .fp-hero-text h1 em { font-style: italic; color: var(--green-light); }
+    .fp-tagline { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); max-width: 520px; line-height: 1.65; margin-bottom: 24px; }
+    .fp-price-badge { display: inline-block; background: var(--accent); color: white; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; padding: 10px 26px; border-radius: 2px; box-shadow: 0 6px 20px rgba(232,93,38,0.4); }
+    .fp-price-badge span { font-size: 14px; font-weight: 300; font-family: 'Lato', sans-serif; }
+    .fp-story { display: grid; grid-template-columns: 1fr 1fr; }
+    .fp-story-text { padding: 80px 70px; background: var(--cream); display: flex; flex-direction: column; justify-content: center; }
+    .fp-story-text .section-eyebrow { text-align: left; margin-bottom: 12px; }
+    .fp-story-h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3vw, 44px); font-weight: 900; color: var(--green-deep); line-height: 1.15; margin-bottom: 24px; }
+    .fp-story-h2 em { font-style: italic; }
+    .fp-story-text p { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--text-mid); margin-bottom: 14px; }
+    .fp-story-img { overflow: hidden; min-height: 480px; }
+    .fp-story-img img { height: 100%; object-fit: cover; }
+    .fp-process { padding: 90px 60px; background: var(--warm-white); }
+    .fp-process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .fp-process-card { border-radius: 4px; overflow: hidden; background: var(--cream); }
+    .fp-process-card .img-wrap { height: 220px; overflow: hidden; }
+    .fp-process-card .img-wrap img { height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .fp-process-card:hover .img-wrap img { transform: scale(1.06); }
+    .fp-process-card-body { padding: 22px 24px; }
+    .fp-process-card-body h4 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--green-deep); margin-bottom: 8px; }
+    .fp-process-card-body p { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--text-mid); }
+    .fp-stats { background: var(--green-deep); padding: 70px 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+    .fp-stat-num { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--green-light); line-height: 1; margin-bottom: 8px; }
+    .fp-stat-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 6px; }
+    .fp-stat-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); }
+    .fp-cta { background: var(--cream); padding: 100px 60px; text-align: center; }
+    .fp-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: var(--green-deep); margin-bottom: 20px; }
+    .fp-cta h2 em { font-style: italic; color: var(--green-mid); }
+    .fp-cta p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 480px; margin: 0 auto 40px; }
+    .fp-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────── -->
+  <nav>
+    <a class="nav-logo" href="#" onclick="showPage('home'); return false;">Greenfield<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#fruits" onclick="showPage('home')">Our Fruits</a></li>
+      <li><a href="#about" onclick="showPage('home')">Our Farm</a></li>
+      <li><a href="#" class="nav-cta" onclick="showPage('contact'); return false;">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HOME PAGE
+  ══════════════════════════════════════════ -->
+  <div id="home-page">
+
+    <!-- HERO -->
+    <section id="home">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Est. 1987 · Queensland, Australia</p>
+        <h1 class="hero-title">Grown with<br><em>love</em> &amp;<br>sunlight.</h1>
+        <p class="hero-desc">Three generations of farming. Every fruit hand-picked at peak ripeness, delivered fresh to your door or straight from our farm gate.</p>
+        <div class="hero-buttons">
+          <a href="#fruits" class="btn-primary">Shop Fresh Fruit</a>
+          <a href="#about" class="btn-outline">Our Story</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">38+</div>
+            <div class="stat-label">Years Farming</div>
+          </div>
+          <div>
+            <div class="stat-num">6</div>
+            <div class="stat-label">Fruit Varieties</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Spray-Free</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=1400&q=90" alt="Fresh strawberries at Greenfield Farm" loading="eager" />
+        <div class="hero-divider"></div>
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1400&q=90" alt="Greenfield Farm orchard" loading="eager" />
+        <div class="hero-badge">
+          <strong>In Season</strong>
+          Strawberries · Mangoes · Citrus
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Farm Fresh</span><span class="dot">✦</span>
+        <span>Spray-Free</span><span class="dot">✦</span>
+        <span>Hand-Picked Daily</span><span class="dot">✦</span>
+        <span>Same-Day Delivery</span><span class="dot">✦</span>
+        <span>Certified Organic</span><span class="dot">✦</span>
+        <span>Queensland Grown</span><span class="dot">✦</span>
+        <span>Family Farm</span><span class="dot">✦</span>
+        <span>Season's Best</span><span class="dot">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span>Farm Fresh</span><span class="dot">✦</span>
+        <span>Spray-Free</span><span class="dot">✦</span>
+        <span>Hand-Picked Daily</span><span class="dot">✦</span>
+        <span>Same-Day Delivery</span><span class="dot">✦</span>
+        <span>Certified Organic</span><span class="dot">✦</span>
+        <span>Queensland Grown</span><span class="dot">✦</span>
+        <span>Family Farm</span><span class="dot">✦</span>
+        <span>Season's Best</span><span class="dot">✦</span>
+      </div>
+    </div>
+
+    <!-- FRUITS -->
+    <section id="fruits">
+      <div class="section-header">
+        <p class="section-eyebrow">What's Growing</p>
+        <h2 class="section-title">Fresh from the <em>orchard</em></h2>
+        <p class="section-sub">Picked at the peak of ripeness — never stored in cold rooms for months. This is fruit the way it's meant to taste.</p>
+      </div>
+
+      <div class="fruit-grid">
+
+        <!-- Card 1 – Strawberries -->
+        <div class="fruit-card" onclick="showFruit('strawberries')" title="Click to learn more">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1543528176-61b239494933?w=600&q=80" alt="Fresh strawberries" loading="lazy" />
+          </div>
+          <div class="fruit-info">
+            <span class="fruit-tag seasonal">In Season</span>
+            <div class="fruit-name">Strawberries</div>
+            <div class="fruit-desc">Sun-drenched and deeply sweet. Our Albion variety are picked each morning at sunrise.</div>
+            <div class="fruit-footer">
+              <div class="fruit-price">$6.50 <span>/ punnet</span></div>
+              <div class="fruit-avail">Available Now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 – Mangoes (tall) -->
+        <div class="fruit-card" onclick="showFruit('mangoes')" title="Click to learn more">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&q=80" alt="Fresh mangoes" loading="lazy" />
+          </div>
+          <div class="fruit-info">
+            <span class="fruit-tag popular">Best Seller</span>
+            <div class="fruit-name">Kensington Pride Mangoes</div>
+            <div class="fruit-desc">Queensland's finest. Fibre-free flesh, floral honey sweetness, and that unmistakable tropical perfume. Available November through February.</div>
+            <div class="fruit-footer">
+              <div class="fruit-price">$14.00 <span>/ tray (6)</span></div>
+              <div class="fruit-avail">Available Now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 – Blueberries -->
+        <div class="fruit-card" onclick="showFruit('blueberries')" title="Click to learn more">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=600&q=80" alt="Fresh blueberries" loading="lazy" />
+          </div>
+          <div class="fruit-info">
+            <span class="fruit-tag">Organic</span>
+            <div class="fruit-name">Blueberries</div>
+            <div class="fruit-desc">Plump, antioxidant-rich and never mealy. Grown under bird netting on our south paddock.</div>
+            <div class="fruit-footer">
+              <div class="fruit-price">$8.00 <span>/ 200g</span></div>
+              <div class="fruit-avail">Available Now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 – Watermelon -->
+        <div class="fruit-card" onclick="showFruit('watermelon')" title="Click to learn more">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Fresh watermelon" loading="lazy" />
+          </div>
+          <div class="fruit-info">
+            <span class="fruit-tag seasonal">Summer Pick</span>
+            <div class="fruit-name">Seedless Watermelon</div>
+            <div class="fruit-desc">Crisp, ice-cold sweetness. Whole melons harvested when the field curl dies back naturally.</div>
+            <div class="fruit-footer">
+              <div class="fruit-price">$12.00 <span>/ whole</span></div>
+              <div class="fruit-avail">Available Now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 – Oranges -->
+        <div class="fruit-card" onclick="showFruit('oranges')" title="Click to learn more">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1547514701-42782101795e?w=600&q=80" alt="Fresh oranges" loading="lazy" />
+          </div>
+          <div class="fruit-info">
+            <span class="fruit-tag">Juicing Grade</span>
+            <div class="fruit-name">Valencia Oranges</div>
+            <div class="fruit-desc">Thin-skinned and bursting with juice. Perfect straight from the press every morning.</div>
+            <div class="fruit-footer">
+              <div class="fruit-price">$9.00 <span>/ 2kg bag</span></div>
+              <div class="fruit-avail">Available Now</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /fruit-grid -->
+    </section>
+
+    <!-- FEATURES -->
+    <div class="features-strip">
+      <div class="feature-item">
+        <span class="feature-icon">🌱</span>
+        <div class="feature-title">No Chemicals</div>
+        <p class="feature-text">We've farmed spray-free for 20 years. What you eat is exactly what the earth grew.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🌅</span>
+        <div class="feature-title">Picked at Dawn</div>
+        <p class="feature-text">Every piece of fruit is harvested in the early morning cool to lock in freshness.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🚚</span>
+        <div class="feature-title">Same-Day Delivery</div>
+        <p class="feature-text">Order before 10am and receive your fruit that afternoon within a 50km radius.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">👨‍👩‍👧</span>
+        <div class="feature-title">Family Owned</div>
+        <p class="feature-text">Three generations of the Greenfield family have farmed this land since 1987.</p>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80" alt="Greenfield Farm fields" loading="lazy" />
+        <div class="about-img-overlay"></div>
+      </div>
+      <div class="about-text">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="about-title">Three generations,<br><em>one piece of land.</em></h2>
+        <p class="about-body">In 1987, Bill and Maree Greenfield planted their first 40 mango trees on a hillside block in the Sunshine Coast Hinterland. What started as a weekend project became a life's work — and eventually, a family legacy.</p>
+        <p class="about-body">Today their grandchildren tend the same soil, now 180 acres of mixed stone fruit, citrus, and berries. We've never chased volume. We chase flavour, season by season, tree by tree.</p>
+        <p class="about-body">We sell at our farm gate, at two local markets, and through a small home-delivery round. That's deliberately small — small enough that we know our soil, our trees, and often, our customers.</p>
+        <div class="about-cta">
+          <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Come Visit the Farm →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT BAND -->
+    <section class="contact-band">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2>Ready for <em>real</em> fruit?</h2>
+      <p>Whether you're placing a bulk order, planning a farm visit, or just want to know what's ripe this week — we'd love to hear from you.</p>
+      <a href="#" class="btn-contact" onclick="showPage('contact'); return false;">Contact Us</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav>
+        <a href="#" onclick="showPage('privacy'); return false;">Privacy</a>
+        <a href="#" onclick="showPage('delivery'); return false;">Delivery</a>
+        <a href="#" onclick="showPage('contact'); return false;">Contact</a>
+      </nav>
+    </footer>
+
+  </div><!-- /home-page -->
+
+
+  <!-- ══════════════════════════════════════════
+       CONTACT PAGE
+  ══════════════════════════════════════════ -->
+  <div id="contact-page" style="display:none;">
+
+    <div class="contact-hero">
+      <div class="contact-hero-inner">
+        <p class="section-eyebrow">Get In Touch</p>
+        <h1>We'd love to<br><em>hear from you.</em></h1>
+        <p>Visit the farm gate, place a bulk order, or just ask us what's at peak ripeness this week. We're a small team — your message will reach a real person.</p>
+      </div>
+    </div>
+
+    <div class="contact-body">
+      <div class="contact-info">
+        <h3>Find Us</h3>
+
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Farm Address</div>
+            <div class="info-val">142 Ridgeline Road<br>Maleny QLD 4552, Australia</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Phone</div>
+            <div class="info-val">(07) 5494 2301</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">hello@greenfieldfarm.com.au</div>
+          </div>
+        </div>
+
+        <div class="hours-grid">
+          <h4>Farm Gate Hours</h4>
+          <div class="hours-row">
+            <span class="day">Monday – Friday</span>
+            <span class="time">7:00am – 4:00pm</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Saturday</span>
+            <span class="time">6:00am – 1:00pm</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Sunday</span>
+            <span class="time">Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3>Send us a message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="first-name" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="last-name" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label>I'm enquiring about</label>
+          <select id="subject">
+            <option value="">Select a topic…</option>
+            <option>Placing a fruit order</option>
+            <option>Home delivery</option>
+            <option>Farm visit / pick-your-own</option>
+            <option>Wholesale enquiry</option>
+            <option>General question</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="message" placeholder="Tell us what you need — what fruit, how much, when…"></textarea>
+        </div>
+        <button class="form-submit" id="submit-btn" onclick="submitForm()">Send Message →</button>
+        <div class="form-success" id="form-success">
+          ✅ &nbsp; Thanks! We'll get back to you within one business day.
+        </div>
+        <div id="form-error" style="display:none; background:rgba(232,93,38,0.1); border:1.5px solid var(--accent); border-radius:2px; padding:20px 24px; margin-top:20px; font-size:15px; color:var(--accent);">
+          ❌ &nbsp; Something went wrong. Please try again or email us directly.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav>
+        <a href="#" onclick="showPage('home'); return false;">← Back to Farm</a>
+      </nav>
+    </footer>
+
+  </div><!-- /contact-page -->
+
+  <!-- ══════════════════════════════════════════
+       FRUIT PAGE: STRAWBERRIES
+  ══════════════════════════════════════════ -->
+  <div id="fruit-strawberries-page" class="fruit-page">
+    <div class="fp-hero">
+      <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=1600&q=80" alt="Albion Strawberries" />
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-text">
+        <h1>Albion <em>Strawberries</em></h1>
+        <p class="fp-tagline">Sun-kissed from dawn to your door. Picked before breakfast, on your table by lunch.</p>
+        <div class="fp-price-badge">$6.50 <span>/ punnet</span></div>
+      </div>
+    </div>
+
+    <div class="fp-story">
+      <div class="fp-story-text">
+        <p class="section-eyebrow">The Story</p>
+        <h2 class="fp-story-h2">Grown in rows,<br><em>ripened in sun.</em></h2>
+        <p>Our Albion strawberries grow in raised rows on the north-facing slope of the farm, where morning sun hits earliest and lingers longest. We've trialled a dozen varieties over the years. The Albion stayed — not because it's the easiest to grow, but because nothing else comes close for depth of flavour.</p>
+        <p>The Albion is a day-neutral variety, which means it produces fruit continuously rather than all at once. Our pickers walk the rows every morning at first light, selecting only berries that have fully coloured and yield just slightly under thumb pressure. If it's not ready, it stays on the plant.</p>
+        <p>Every punnet is field-cooled within 30 minutes of picking. No cold storage. No ethylene ripening. Just the real thing.</p>
+      </div>
+      <div class="fp-story-img">
+        <img src="https://images.unsplash.com/photo-1543528176-61b239494933?w=900&q=80" alt="Strawberry rows at Greenfield Farm" />
+      </div>
+    </div>
+
+    <div class="fp-process">
+      <div class="section-header">
+        <p class="section-eyebrow">From Field to Punnet</p>
+        <h2 class="section-title">How we grow <em>ours</em></h2>
+        <p class="section-sub">Three steps. No shortcuts. The way strawberries were always meant to be grown.</p>
+      </div>
+      <div class="fp-process-grid">
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Bed preparation" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Raised Bed Planting</h4>
+            <p>Each season we re-mound our beds with composted organic matter and certified coir fibre. No synthetic fertilisers — just what the soil genuinely needs.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=700&q=80" alt="Dawn harvest" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Dawn Harvest</h4>
+            <p>Picked before 6am while temperatures are still cool. Berries harvested in heat lose sweetness and firmness rapidly — ours never do.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80" alt="Field cooling" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Field-Cooled Fast</h4>
+            <p>Within 30 minutes of picking, punnets move into our forced-air cooling shed. This locks in sugar, texture, and that bright berry fragrance you can smell before you open the lid.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-stats">
+      <div><div class="fp-stat-num">2,847</div><div class="fp-stat-label">Punnets Sold</div><div class="fp-stat-sub">This season alone</div></div>
+      <div><div class="fp-stat-num">4.9★</div><div class="fp-stat-label">Avg. Rating</div><div class="fp-stat-sub">312 verified reviews</div></div>
+      <div><div class="fp-stat-num">#1</div><div class="fp-stat-label">Best Seller</div><div class="fp-stat-sub">Maleny Farmers Market</div></div>
+      <div><div class="fp-stat-num">6am</div><div class="fp-stat-label">Daily Harvest</div><div class="fp-stat-sub">7 days a week, year-round</div></div>
+    </div>
+
+    <div class="fp-cta">
+      <h2>Ready to taste the <em>difference?</em></h2>
+      <p>Order a punnet — or a case of six — and we'll have them to you the same day. Farm gate pickup always available.</p>
+      <div class="fp-cta-buttons">
+        <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Order Now — $6.50 / punnet</a>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav><a href="#" onclick="showPage('home'); return false;">← Back to Farm</a></nav>
+    </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       FRUIT PAGE: MANGOES
+  ══════════════════════════════════════════ -->
+  <div id="fruit-mangoes-page" class="fruit-page">
+    <div class="fp-hero">
+      <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=1600&q=80" alt="Kensington Pride Mangoes" />
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-text">
+        <h1>Kensington Pride <em>Mangoes</em></h1>
+        <p class="fp-tagline">Tree-ripened. Never rushed. The Bowen mango the way Queensland intended it.</p>
+        <div class="fp-price-badge">$14.00 <span>/ tray of 6</span></div>
+      </div>
+    </div>
+
+    <div class="fp-story">
+      <div class="fp-story-text">
+        <p class="section-eyebrow">The Story</p>
+        <h2 class="fp-story-h2">Thirty-year roots,<br><em>floral honey sweetness.</em></h2>
+        <p>The Kensington Pride — Bowen mango to most Queenslanders — is the benchmark by which every other variety is judged. Ours come from trees planted in 1994, now over 30 years old, with root systems that reach deep into the volcanic basalt subsoil of the Sunshine Coast Hinterland.</p>
+        <p>Old trees produce less fruit but dramatically better fruit. The sugars concentrate. The fibres disappear. The fragrance becomes something entirely different from a young-tree mango — more floral, more complex, more unmistakably Queensland.</p>
+        <p>We test brix (sugar) levels before picking begins each day. If the reading isn't right, we wait. We'd rather sell fewer mangoes than disappoint a single customer.</p>
+      </div>
+      <div class="fp-story-img">
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=80" alt="Mango orchard at Greenfield Farm" />
+      </div>
+    </div>
+
+    <div class="fp-process">
+      <div class="section-header">
+        <p class="section-eyebrow">From Blossom to Tray</p>
+        <h2 class="section-title">Nine months of <em>patience</em></h2>
+        <p class="section-sub">A Kensington Pride mango takes from August blossom to November harvest. We don't cut corners at any stage.</p>
+      </div>
+      <div class="fp-process-grid">
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Tree management" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Tree Management</h4>
+            <p>Our trees are pruned annually to open the canopy, maximising airflow and sun penetration to every cluster. Healthier trees, better fruit. Simple.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80" alt="Brix testing" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Brix Testing</h4>
+            <p>Every morning before picking, we test fruit from multiple trees with a refractometer. We don't start harvesting until brix hits our minimum threshold. No exceptions.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=700&q=80" alt="Hand grading" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Hand Graded & Packed</h4>
+            <p>Every mango is graded by hand for size, skin colour and any blemishes before being nestled in tissue-lined trays. Six per tray. Not seven, not five.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-stats">
+      <div><div class="fp-stat-num">1,203</div><div class="fp-stat-label">Trays Sold</div><div class="fp-stat-sub">This season</div></div>
+      <div><div class="fp-stat-num">5.0★</div><div class="fp-stat-label">Avg. Rating</div><div class="fp-stat-sub">98 verified reviews</div></div>
+      <div><div class="fp-stat-num">30+</div><div class="fp-stat-label">Year Old Trees</div><div class="fp-stat-sub">Deep basalt root systems</div></div>
+      <div><div class="fp-stat-num">Nov–Feb</div><div class="fp-stat-label">Season Window</div><div class="fp-stat-sub">Limited availability</div></div>
+    </div>
+
+    <div class="fp-cta">
+      <h2>The mango Queensland <em>remembers.</em></h2>
+      <p>Limited seasonal availability. Pre-orders open in October — last season we sold out by Christmas week.</p>
+      <div class="fp-cta-buttons">
+        <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Pre-Order Now — $14.00 / tray</a>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav><a href="#" onclick="showPage('home'); return false;">← Back to Farm</a></nav>
+    </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       FRUIT PAGE: BLUEBERRIES
+  ══════════════════════════════════════════ -->
+  <div id="fruit-blueberries-page" class="fruit-page">
+    <div class="fp-hero">
+      <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=1600&q=80" alt="Fresh blueberries" />
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-text">
+        <h1>Organic <em>Blueberries</em></h1>
+        <p class="fp-tagline">Small. Dense. Grown slow under bird netting on our south paddock — never touched by pesticide.</p>
+        <div class="fp-price-badge">$8.00 <span>/ 200g</span></div>
+      </div>
+    </div>
+
+    <div class="fp-story">
+      <div class="fp-story-text">
+        <p class="section-eyebrow">The Story</p>
+        <h2 class="fp-story-h2">Certified organic,<br><em>genuinely flavourful.</em></h2>
+        <p>Most blueberries on supermarket shelves are grown for size and shelf life — not taste. Our O'Neal variety is the opposite: smaller, denser, with a flavour concentration that makes commercial blueberries taste like flavoured water in comparison.</p>
+        <p>We grow under permanent bird netting on the south paddock, which reduces UV stress on the fruit and keeps the berry skins tender rather than tough. The netting also means zero pesticide spray, since bird pressure (our biggest threat) is handled physically rather than chemically.</p>
+        <p>Each 200g pack is hand-sorted on the grading table — every berry inspected, no soft ones, no stems. What you get is the premium pick.</p>
+      </div>
+      <div class="fp-story-img">
+        <img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=900&q=80" alt="Blueberry bushes on the south paddock" />
+      </div>
+    </div>
+
+    <div class="fp-process">
+      <div class="section-header">
+        <p class="section-eyebrow">Zero Pesticides, All Flavour</p>
+        <h2 class="section-title">How we keep them <em>pure</em></h2>
+        <p class="section-sub">Growing certified organic blueberries takes more work. We think the result speaks for itself.</p>
+      </div>
+      <div class="fp-process-grid">
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80" alt="Organic soil" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Acid Soil Preparation</h4>
+            <p>Blueberries demand soil pH between 4.5 and 5.5. We adjust annually with certified organic sulphur and pine bark mulch — no synthetic acidifiers, ever.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=700&q=80" alt="Bird netting" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Permanent Bird Netting</h4>
+            <p>The netting stays up year-round, protecting fruit from birds and reducing UV load. Softer skins, better colour, zero spray required. A win on every front.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=700&q=80" alt="Hand sorting" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Hand-Sorted & Packed</h4>
+            <p>Every berry goes across the grading table. We remove anything soft, shrivelled or undersized. You pay for 200g of premium fruit — that's exactly what you receive.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-stats">
+      <div><div class="fp-stat-num">891</div><div class="fp-stat-label">Packs Sold</div><div class="fp-stat-sub">This season</div></div>
+      <div><div class="fp-stat-num">4.8★</div><div class="fp-stat-label">Avg. Rating</div><div class="fp-stat-sub">156 verified reviews</div></div>
+      <div><div class="fp-stat-num">0</div><div class="fp-stat-label">Pesticides Used</div><div class="fp-stat-sub">Ever. In 20+ years.</div></div>
+      <div><div class="fp-stat-num">Cert.</div><div class="fp-stat-label">Organic Status</div><div class="fp-stat-sub">ACO certified since 2009</div></div>
+    </div>
+
+    <div class="fp-cta">
+      <h2>Taste what <em>organic really means.</em></h2>
+      <p>Available in 200g packs or 1kg bulk bags for serious bakers and smoothie lovers. Same-day delivery within 50km.</p>
+      <div class="fp-cta-buttons">
+        <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Order Now — $8.00 / 200g</a>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav><a href="#" onclick="showPage('home'); return false;">← Back to Farm</a></nav>
+    </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       FRUIT PAGE: WATERMELON
+  ══════════════════════════════════════════ -->
+  <div id="fruit-watermelon-page" class="fruit-page">
+    <div class="fp-hero">
+      <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=1600&q=80" alt="Seedless Watermelon" />
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-text">
+        <h1>Seedless <em>Watermelon</em></h1>
+        <p class="fp-tagline">Grown slow through the Queensland summer. Cut when they're genuinely ready — not a day before.</p>
+        <div class="fp-price-badge">$12.00 <span>/ whole melon</span></div>
+      </div>
+    </div>
+
+    <div class="fp-story">
+      <div class="fp-story-text">
+        <p class="section-eyebrow">The Story</p>
+        <h2 class="fp-story-h2">Thumped for ripeness,<br><em>never rushed.</em></h2>
+        <p>You can tell a Greenfield watermelon is ready the same way farmers have always known — the field tendril nearest the fruit dries and curls back completely. That's nature's signal, and it hasn't been wrong in 38 years of farming this land.</p>
+        <p>We grow our Crimson Seedless variety in long rows on the flat river paddock, which floods naturally in winter and leaves behind an extraordinary depth of topsoil. No irrigation tricks needed — by summer the soil holds enough moisture to grow enormous, deeply flavoured fruit.</p>
+        <p>Average weight at harvest is 8–10kg. We don't harvest smaller. A small watermelon is an unripe watermelon.</p>
+      </div>
+      <div class="fp-story-img">
+        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=900&q=80" alt="Watermelon field at Greenfield Farm" />
+      </div>
+    </div>
+
+    <div class="fp-process">
+      <div class="section-header">
+        <p class="section-eyebrow">Field to Farm Gate</p>
+        <h2 class="section-title">Summer's most <em>satisfying harvest</em></h2>
+        <p class="section-sub">Watermelons can't be rushed. Three months in the ground, harvested at a single perfect moment.</p>
+      </div>
+      <div class="fp-process-grid">
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=700&q=80" alt="River paddock soil" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>River Paddock Soil</h4>
+            <p>The flat paddock along our creek floods each winter, depositing fresh alluvial silt. By spring, the soil is black and deep — exactly what watermelons need to develop real sweetness.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=700&q=80" alt="Field ripening" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Field-Ripened Only</h4>
+            <p>We wait for the tendril curl. We check the ground spot — it should be a creamy yellow, not white. We thump and listen for the deep, hollow resonance. Only then do we cut.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=700&q=80" alt="Fresh watermelons" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Same-Day Collection</h4>
+            <p>Cut melons leave the paddock within hours. Unlike commercial operations, we don't hold stock in a shed for days. What we cut today is available today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-stats">
+      <div><div class="fp-stat-num">634</div><div class="fp-stat-label">Melons Sold</div><div class="fp-stat-sub">This summer season</div></div>
+      <div><div class="fp-stat-num">4.9★</div><div class="fp-stat-label">Avg. Rating</div><div class="fp-stat-sub">87 verified reviews</div></div>
+      <div><div class="fp-stat-num">8–10kg</div><div class="fp-stat-label">Avg. Weight</div><div class="fp-stat-sub">Per whole melon</div></div>
+      <div><div class="fp-stat-num">Dec–Mar</div><div class="fp-stat-label">Season</div><div class="fp-stat-sub">Summer harvest only</div></div>
+    </div>
+
+    <div class="fp-cta">
+      <h2>A whole Queensland <em>summer in one melon.</em></h2>
+      <p>Available whole only — we don't cut them until they're with you. Fits in any fridge, feeds a family of six.</p>
+      <div class="fp-cta-buttons">
+        <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Order Now — $12.00 / melon</a>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav><a href="#" onclick="showPage('home'); return false;">← Back to Farm</a></nav>
+    </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       FRUIT PAGE: VALENCIA ORANGES
+  ══════════════════════════════════════════ -->
+  <div id="fruit-oranges-page" class="fruit-page">
+    <div class="fp-hero">
+      <img src="https://images.unsplash.com/photo-1547514701-42782101795e?w=1600&q=80" alt="Valencia Oranges" />
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-text">
+        <h1>Valencia <em>Oranges</em></h1>
+        <p class="fp-tagline">The best juice you'll ever press. Thin-skinned, late-season, bursting with liquid gold.</p>
+        <div class="fp-price-badge">$9.00 <span>/ 2kg bag</span></div>
+      </div>
+    </div>
+
+    <div class="fp-story">
+      <div class="fp-story-text">
+        <p class="section-eyebrow">The Story</p>
+        <h2 class="fp-story-h2">The juicer's orange,<br><em>done properly.</em></h2>
+        <p>Valencia oranges are the world's most planted variety for a reason: the juice-to-peel ratio is extraordinary. Our trees sit on a north-east facing hillside block that gets consistent morning sun, which drives sugar development without the acid-stripping heat of a western exposure.</p>
+        <p>The Valencia is a late-season variety — our harvest window runs August through November, long after navels are finished. By August, the sugar has been building for months and the skin is paper-thin. Juice yield per kilogram is typically 40% higher than a supermarket navel orange bought the same week.</p>
+        <p>We bag them the morning of delivery. If you order by 10am, you'll be pressing by 3pm.</p>
+      </div>
+      <div class="fp-story-img">
+        <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=80" alt="Orange grove at Greenfield Farm" />
+      </div>
+    </div>
+
+    <div class="fp-process">
+      <div class="section-header">
+        <p class="section-eyebrow">From Grove to Glass</p>
+        <h2 class="section-title">Juice-grade quality,<br><em>every single bag</em></h2>
+        <p class="section-sub">A Valencia grown well is a fundamentally different product. Here's why ours are different.</p>
+      </div>
+      <div class="fp-process-grid">
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=700&q=80" alt="Grove maintenance" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Grove Maintenance</h4>
+            <p>Our citrus grove is hand-pruned each year to remove dead wood and improve airflow. Healthier trees produce thinner-skinned, juicier fruit — it's that direct a connection.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Soil nutrition" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Organic Nutrition Program</h4>
+            <p>We feed our citrus trees with a certified organic program of fish emulsion, compost tea and trace mineral sprays. No synthetic NPK. Slower, but the flavour difference is measurable.</p>
+          </div>
+        </div>
+        <div class="fp-process-card">
+          <div class="img-wrap"><img src="https://images.unsplash.com/photo-1547514701-42782101795e?w=700&q=80" alt="Fresh Valencia oranges" loading="lazy" /></div>
+          <div class="fp-process-card-body">
+            <h4>Picked to Order</h4>
+            <p>Unlike supermarket citrus that may sit in cold storage for weeks, our bags are picked the morning you order and delivered the same afternoon. Juice within 24 hours of leaving the tree.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-stats">
+      <div><div class="fp-stat-num">1,456</div><div class="fp-stat-label">Bags Sold</div><div class="fp-stat-sub">This season</div></div>
+      <div><div class="fp-stat-num">4.7★</div><div class="fp-stat-label">Avg. Rating</div><div class="fp-stat-sub">203 verified reviews</div></div>
+      <div><div class="fp-stat-num">40%</div><div class="fp-stat-label">More Juice Yield</div><div class="fp-stat-sub">vs. supermarket navels</div></div>
+      <div><div class="fp-stat-num">Aug–Nov</div><div class="fp-stat-label">Season Window</div><div class="fp-stat-sub">Late-season variety only</div></div>
+    </div>
+
+    <div class="fp-cta">
+      <h2>Press it fresh. <em>Taste the difference.</em></h2>
+      <p>Order a 2kg bag — enough for 8–10 glasses of fresh juice. Bulk 5kg bags available on request for cafés and households.</p>
+      <div class="fp-cta-buttons">
+        <a href="#" class="btn-primary" onclick="showPage('contact'); return false;">Order Now — $9.00 / 2kg bag</a>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo">Greenfield<span>.</span></div>
+      <div>© 2025 Greenfield Farm. Sunshine Coast Hinterland, QLD.</div>
+      <nav><a href="#" onclick="showPage('home'); return false;">← Back to Farm</a></nav>
+    </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       PRIVACY PAGE
+  ══════════════════════════════════════════ -->
+  <div id="privacy-page" style="display:none;">
+    <div class="contact-hero">
+      <div class="contact-hero-inner">
+        <p class="section-eyebrow">Legal</p>
+        <h1>Privacy<br><em>Policy.</em></h1>
+        <p>We take your privacy seriously. Here's how we collect, use, and protect your information.</p>
+      </div>
+    </div>
+    <div class="policy-body">
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>What We Collect</h3>
+          <p>When you use our contact form or place an order, we collect your name, email address, phone number, and delivery address. We do not collect payment information directly — all transactions are handled by our secure payment partners.</p>
+        </div>
+        <div class="policy-card">
+          <h3>How We Use It</h3>
+          <p>Your information is used solely to fulfil your orders, respond to enquiries, and send occasional farm updates if you've opted in. We will never sell or share your personal data with third parties for marketing purposes.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Cookies</h3>
+          <p>This website uses minimal cookies to keep the site functioning correctly. We do not use advertising or tracking cookies of any kind.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Your Rights</h3>
+          <p>You have the right to access, correct, or request deletion of any personal data we hold. Contact us at <strong>hello@greenfieldfarm.com.au</strong> or call <strong>(07) 5494 2301</strong>.</p>
+        </div>
+      </div>
+      <p style="color:var(--text-light); font-size:13px; margin-bottom:40px;">This policy was last updated January 2025. Any changes will be posted on this page.</p>
+      <a href="#" class="policy-back" onclick="showPage('home'); return false;">← Back to Farm</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       DELIVERY PAGE
+  ══════════════════════════════════════════ -->
+  <div id="delivery-page" style="display:none;">
+    <div class="contact-hero">
+      <div class="contact-hero-inner">
+        <p class="section-eyebrow">Getting Your Fruit</p>
+        <h1>Delivery<br><em>Info.</em></h1>
+        <p>Fresh from the farm to your door — here's everything you need to know.</p>
+      </div>
+    </div>
+    <div class="policy-body">
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Delivery Days</h3>
+          <p>We deliver Tuesday, Thursday, and Saturday mornings. Orders must be placed by <strong>8:00 PM the night before</strong> to be included in the next run. You'll receive a text message when your order is on its way.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Delivery Area</h3>
+          <p>We deliver to the <strong>Sunshine Coast Hinterland</strong> including Maleny, Montville, Mapleton, Flaxton, Kenilworth, and surrounding areas within 30 km of the farm. Not sure if you're in range? Give us a call.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Delivery Fee</h3>
+          <p>Delivery is <strong>$5.00 flat</strong> for orders under $40. Orders over $40 receive <strong>free delivery</strong>. We always pack your fruit the morning of delivery so it arrives as fresh as possible.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Farm Gate Pickup</h3>
+          <p>Our farm gate is open <strong>Wednesday – Sunday, 7 AM – 1 PM</strong>. No need to pre-order for gate sales, though calling ahead is appreciated for larger quantities.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Damaged or Missing Items</h3>
+          <p>If anything arrives damaged or isn't up to standard, contact us within 24 hours and we'll make it right — no questions asked.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Get in Touch</h3>
+          <p>Questions about your order? Call us on <strong>(07) 5494 2301</strong> or email <strong>hello@greenfieldfarm.com.au</strong> — a real person will get back to you.</p>
+        </div>
+      </div>
+      <a href="#" class="policy-back" onclick="showPage('home'); return false;">← Back to Farm</a>
+    </div>
+  </div>
+
+  <script>
+    const fruitIds = ['strawberries', 'mangoes', 'blueberries', 'watermelon', 'oranges'];
+
+    const mainNav = document.querySelector('nav');
+
+    function hideAll() {
+      if (document.activeElement) document.activeElement.blur();
+      document.getElementById('home-page').style.display    = 'none';
+      document.getElementById('contact-page').style.display = 'none';
+      document.getElementById('privacy-page').style.display = 'none';
+      document.getElementById('delivery-page').style.display = 'none';
+      fruitIds.forEach(f => {
+        document.getElementById('fruit-' + f + '-page').style.display = 'none';
+      });
+    }
+
+    function showPage(page) {
+      hideAll();
+      mainNav.style.display = '';
+      if (page === 'contact') {
+        document.getElementById('contact-page').style.display = 'block';
+      } else if (page === 'privacy') {
+        document.getElementById('privacy-page').style.display = 'block';
+      } else if (page === 'delivery') {
+        document.getElementById('delivery-page').style.display = 'block';
+      } else {
+        document.getElementById('home-page').style.display = 'block';
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showFruit(fruit) {
+      hideAll();
+      mainNav.style.display = '';
+      document.getElementById('fruit-' + fruit + '-page').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function submitForm() {
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName  = document.getElementById('last-name').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const subject   = document.getElementById('subject').value;
+      const message   = document.getElementById('message').value.trim();
+
+      if (!firstName || !email || !message) {
+        alert('Please fill in at least your first name, email, and message.');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const formData = new FormData();
+      formData.append('name', firstName + (lastName ? ' ' + lastName : ''));
+      formData.append('email', email);
+      formData.append('message', (subject ? 'Topic: ' + subject + '\n\n' : '') + message);
+
+      try {
+        const res = await fetch('/contact', {
+          method: 'POST',
+          body: formData
+        });
+        if (res.ok) {
+          document.getElementById('form-success').style.display = 'block';
+          document.getElementById('form-error').style.display   = 'none';
+          btn.textContent = 'Message Sent ✓';
+          btn.style.background = '#4a7c2f';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        document.getElementById('form-error').style.display   = 'block';
+        document.getElementById('form-success').style.display = 'none';
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+      }
+    }
+
+  </script>
+</body>
+</html>
